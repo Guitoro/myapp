@@ -18,12 +18,12 @@ router.get('/', function(req, res, next) {
 
 });
 
-router.get('/db', async (req, res) => {
+router.get('/dbtest', async (req, res) => {
     try {
       const client = await pool.connect()
       const result = await client.query('SELECT * FROM test_table');
       const results = { 'results': (result) ? result.rows : null};
-      res.render('pages/db', results );
+      res.render('pages/dbtest', results );
       client.release();
     } catch (err) {
       console.error(err);
@@ -31,6 +31,31 @@ router.get('/db', async (req, res) => {
     }
   })
 
+router.get('/coches', async (req, res) => {
+    try {
+      const client = await pool.connect()
+      const result = await client.query('SELECT * FROM tabla_coches');
+      const results = { 'results': (result) ? result.rows : null};
+      res.render('pages/coches', results );
+      client.release();
+    } catch (err) {
+      console.error(err);
+      res.send("Error " + err);
+    }
+  })
+  
+  router.get('/ordenadores', async (req, res) => {
+    try {
+      const client = await pool.connect()
+      const result = await client.query('SELECT * FROM tabla_ordenadores');
+      const results = { 'results': (result) ? result.rows : null};
+      res.render('pages/ordenadores', results );
+      client.release();
+    } catch (err) {
+      console.error(err);
+      res.send("Error " + err);
+    }
+  })
 
 module.exports = router;
 

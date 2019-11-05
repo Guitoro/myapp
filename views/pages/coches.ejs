@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <% include ../partials/header_coches.ejs %>
+<style>
+table, th, td {
+  border: 1px solid black;  
+}
+table {
+  border-spacing: 5px;
+}
+th {
+  text-align: center;
+}
+td {
+  text-align: left
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+<h2>Coches Disponibles</h2>
+
+<table style = "width:50%">
+
+<tr>
+  <th>Marca</th>
+  <th>Kilometros</th>
+  <th>Precios</th>
+</tr>
+
+    <% results.forEach(function(r) { %> <tr>
+        <td><%= r.marca %></td> 
+	<td><%= r.kilometros %> Km</td>
+ 	<td><%= r.precio %> &#8364 </td>
+    <% }); %> </tr>
+
+</table>
+
+</div>
+
+</body>
+</html>
